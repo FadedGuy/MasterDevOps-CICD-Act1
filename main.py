@@ -14,7 +14,7 @@ DEFAULT_ASCENDING = True
 
 def sort_list(items, ascending=True):
     if not isinstance(items, list):
-        raise RuntimeError(f"No puede ordenar {type(items)}")
+        raise RuntimeError(f"Cannot sort {type(items)}")
 
     # La función sorted usa reverse=True para orden descendente
     return sorted(items, reverse=(not ascending))
@@ -38,12 +38,13 @@ if __name__ == "__main__":
         # El tercer argumento ('asc' o 'desc') determina el orden
         is_ascending = sys.argv[3].lower() == "asc"
     else:
-        print("Argumentos requeridos no proporcionados.")
-        print("Uso: python main.py <nombre_fichero> <eliminar_duplicados ('yes'/'no')> <orden ('asc'/'desc')>")
+        print("File name must be provided as the first argument")
+        print("The second argument indicates whether duplicates should be removed")
+        print("Use: python main.py <filename> <delete_duplicates ('yes'/'no')> <order ('asc'/'desc')>")
         sys.exit(1)
     # -----------------------------------------------------------
 
-    print(f"Se leerán las palabras del fichero {filename}")
+    print(f"Words will be read from the file {filename}")
     file_path = os.path.join(".", filename)
     if os.path.isfile(file_path):
         word_list = []
@@ -55,7 +56,7 @@ if __name__ == "__main__":
             print(f"Error al leer el fichero: {e}")
             sys.exit(1)
     else:
-        print(f"El fichero {filename} no existe. Usando lista por defecto.")
+        print(f"The file {filename} does not exist. Using list as default")
         word_list = ["ravenclaw", "gryffindor", "slytherin", "hufflepuff"]
 
     if remove_duplicates:
