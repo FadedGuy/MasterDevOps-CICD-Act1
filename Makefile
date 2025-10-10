@@ -10,3 +10,6 @@ run:
 		-w /opt/app \
 		python:3.6-slim \
 		python3 main.py $(ARGS)
+
+run-local:
+	python3 main.py $(ARGS)
